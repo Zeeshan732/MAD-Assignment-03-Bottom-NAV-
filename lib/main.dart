@@ -35,38 +35,60 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Main Screen')),
-      body: const Center(child: Text('Tap an icon below to navigate')),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.lightGreen[300],
-        shape: const CircularNotchedRectangle(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GestureDetector(
-                onTap: () => navigateWithHero(context, const Home()),
-                child: const Hero(
-                  tag: 'home-icon',
-                  child: Icon(Icons.home, size: 30),
-                ),
+      body: const Center(
+        child: Text(
+          'Tap an icon below to navigate',
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.lightGreen,
+        height: 60,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton.icon(
+              onPressed: () => navigateWithHero(context, const Home()),
+              icon: const Hero(
+                tag: 'home-icon',
+                child: Icon(Icons.home, color: Colors.white),
               ),
-              GestureDetector(
-                onTap: () => navigateWithHero(context, const About()),
-                child: const Hero(
-                  tag: 'about-icon',
-                  child: Icon(Icons.info, size: 30),
-                ),
+              label: const Text('Home', style: TextStyle(color: Colors.white)),
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: const Size(50, 40),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
-              GestureDetector(
-                onTap: () => navigateWithHero(context, const Contact()),
-                child: const Hero(
-                  tag: 'contact-icon',
-                  child: Icon(Icons.contact_mail, size: 30),
-                ),
+            ),
+            const SizedBox(width: 40),
+            TextButton.icon(
+              onPressed: () => navigateWithHero(context, const About()),
+              icon: const Hero(
+                tag: 'about-icon',
+                child: Icon(Icons.info, color: Colors.white),
               ),
-            ],
-          ),
+              label: const Text('About', style: TextStyle(color: Colors.white)),
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: const Size(50, 40),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+            ),
+            const SizedBox(width: 40),
+            TextButton.icon(
+              onPressed: () => navigateWithHero(context, const Contact()),
+              icon: const Hero(
+                tag: 'contact-icon',
+                child: Icon(Icons.contact_mail, color: Colors.white),
+              ),
+              label: const Text('Contact', style: TextStyle(color: Colors.white)),
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: const Size(50, 40),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+            ),
+          ],
         ),
       ),
     );
